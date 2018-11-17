@@ -27,13 +27,15 @@ class User extends Component {
     .catch(err=>{
       console.log(err);
       this.setState({
-        q:0
+        data:[],
+        q:0,
+        f:0
       })
     });
   }
 
   render() {
-    console.log(this.state.status);
+    console.log(this.state.q);
     let data=this.state.data;
     return (
 
@@ -48,7 +50,7 @@ class User extends Component {
         <img src={data.avatar_url} className="img-width" />
         <div className="row"><button className="btn"><a href={data.html_url}>Github profile</a></button></div>
        </div>
-       </div>:this.state.q==0?"does not exist":null}
+       </div>:this.state.q==0?<div className="row center"><h1>User does not exist</h1></div>:null}
       </div>
     );
   }
